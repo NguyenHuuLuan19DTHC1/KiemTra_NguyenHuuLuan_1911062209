@@ -1,0 +1,56 @@
+﻿@model KiemTra_NguyenHuuLuan.Models.SinhVien
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <p>
+            Họ và tên:
+            <div>
+                @Html.TextBox("HoTen")<font color="red">@ViewData["Error"]</font>
+            </div>
+            <br />Giới tính:
+            <div>
+                @Html.TextBox("GioiTinh")<font color="red">@ViewData["Error"]</font>
+            </div>
+            <br />Ngày sinh:
+            <div>
+                @Html.TextBox("NgaySinh")<font color="red">@ViewData["Error"]</font>
+            </div>
+            <br />Hình:
+            <div>
+                @*@Html.TextBox("Hinh")<font color="red">@ViewData["Error"]</font>*@
+                <img src="@Html.DisplayFor(model => model.Hinh)" width="95" title="cover" />
+                <select @Html.TextBox("Hinh")>
+                    <option value="#">Delete image</option>
+                    <option value="/Content/images/sv1.jpg">Ảnh 1</option>
+                    <option value="/Content/images/sv2.jpg">Ảnh 2</option>
+                    <option value="/Content/images/sv3.jpg">Ảnh 3</option>
+                    <option value="/Content/images/sv4.jpg">Ảnh 4</option>
+                    <option value="/Content/images/sv5.jpg">Ảnh 5</option>
+                    <option value="/Content/images/sv6.jpg">Ảnh 6</option>
+                    <option value="/Content/images/sv7.jpg">Ảnh 7</option>
+                    <option value="/Content/images/sv8.jpg">Ảnh 8</option>
+                </select>
+            </div>
+            <br />Mã ngành:
+            <div>
+                @Html.TextBox("MaNganh")<font color="red">@ViewData["Error"]</font>
+            </div>
+
+        </p>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

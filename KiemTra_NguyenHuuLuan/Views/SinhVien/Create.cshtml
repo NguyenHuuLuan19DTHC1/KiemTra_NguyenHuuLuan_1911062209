@@ -1,0 +1,49 @@
+﻿@model KiemTra_NguyenHuuLuan.Models.SinhVien
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <p>
+            Mã SV:
+            <div>
+                @Html.TextBox("MaSV")<font color="red">@ViewData["Error"]</font>
+            </div>
+                                 <br />Họ và tên:
+                                 <div>
+                                     @Html.TextBox("HoTen")<font color="red">@ViewData["Error"]</font>
+                                 </div>
+                                  <br />Giới tính:
+                                  <div>
+                                      @Html.TextBox("GioiTinh")<font color="red">@ViewData["Error"]</font>
+                                  </div>
+                                     <br />Ngày sinh:
+                                     <div>
+                                         @Html.TextBox("NgaySinh")<font color="red">@ViewData["Error"]</font>
+                                     </div>
+                                     <br />Hình:
+                                     <div>
+                                         @Html.TextBox("Hinh")<font color="red">@ViewData["Error"]</font>
+                                     </div>
+                                 <br />Mã ngành:
+                                 <div>
+                                     @Html.TextBox("MaNganh")<font color="red">@ViewData["Error"]</font>
+                                 </div>
+
+        </p>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>  
+

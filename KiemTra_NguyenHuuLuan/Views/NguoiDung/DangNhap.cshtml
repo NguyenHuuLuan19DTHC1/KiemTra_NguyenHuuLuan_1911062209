@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đăng nhập</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="sign-in-htm">
+
+        <div class="group">
+            <label for="user" class="label">Username or Email</label>
+            <input id="user" type="text" class="input" name="USERNAME">
+            @ViewData["Error1"]
+        </div>
+        <a href="#" class="group">
+            <input type="submit" class="button" value="Đăng nhập">
+        </a>
+
+        <div class="hr"></div>
+        <h5 style="color:red; text-align:center"> @ViewBag.ThongBao</h5>
+
+    </div>
+
+}
+
