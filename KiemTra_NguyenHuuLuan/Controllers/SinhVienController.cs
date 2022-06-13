@@ -16,6 +16,12 @@ namespace KiemTra_NguyenHuuLuan.Controllers
             var all_Sv= from sv in data.SinhViens select sv;
             return View(all_Sv);
         }
+            public ActionResult LogOut()
+            {
+                Session["TaiKhoanSV"] = null;
+                return RedirectToAction("Index", "SinhVien");
+            }
+
         public ActionResult Detail(string id)
         {
             var D_Sv = data.SinhViens.SingleOrDefault(m => m.MaSV == (id));

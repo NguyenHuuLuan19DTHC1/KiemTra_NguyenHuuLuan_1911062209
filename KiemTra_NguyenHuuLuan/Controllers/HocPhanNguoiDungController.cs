@@ -13,32 +13,32 @@ namespace KiemTra_NguyenHuuLuan.Controllers
         MyDataDataContext data = new MyDataDataContext();
         public ActionResult Index()
         {
-            return View();
+            var all_hp = from hp in data.HocPhans select hp;
+            return View(all_hp);
+            
         }
-        public List<HocPhan> LayHocPhan()
+        public List<hocphan> LayHocPhan()
         {
-            List<HocPhan> lstHocPhan = Session["hocphan"] as List<HocPhan>;
+            List<hocphan> lstHocPhan = Session["hocphan"] as List<hocphan>;
             if (lstHocPhan == null)
             {
-                lstHocPhan = new List<HocPhan>();
+                lstHocPhan = new List<hocphan>();
                 Session["hocphan"] = lstHocPhan;
             }
             return lstHocPhan;
         }
         public ActionResult HocPhan()
         {
-            List<HocPhan> lstGioHang = LayHocPhan();
-            
-
+            List<hocphan> lstGioHang = LayHocPhan();
             return View(lstGioHang);
         }
         public ActionResult ThemHocPhan(string id, string strURL)
         {
-            List<HocPhan> lstHocPhan = LayHocPhan();
-            HocPhan hocphan = lstHocPhan.Find(n => n.MaHP == id);
+            List<hocphan> lstHocPhan = LayHocPhan();
+            hocphan hocphan = lstHocPhan.Find(n => n.MaHP == id);
             if (hocphan == null)
             {
-                hocphan = new HocPhan();
+                hocphan = new hocphan(id);
                 lstHocPhan.Add(hocphan);
                 //return Redirect(strURL);
             }

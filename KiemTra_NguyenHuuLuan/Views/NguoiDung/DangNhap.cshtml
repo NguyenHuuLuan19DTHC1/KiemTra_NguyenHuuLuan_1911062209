@@ -8,11 +8,10 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <div class="sign-in-htm">
 
         <div class="group">
             <label for="user" class="label">Username or Email</label>
-            <input id="user" type="text" class="input" name="USERNAME">
+            <input id="user" type="text" class="input" name="MaSV">
             @ViewData["Error1"]
         </div>
         <a href="#" class="group">
@@ -21,8 +20,6 @@
 
         <div class="hr"></div>
         <h5 style="color:red; text-align:center"> @ViewBag.ThongBao</h5>
-
-    </div>
 
 }
 

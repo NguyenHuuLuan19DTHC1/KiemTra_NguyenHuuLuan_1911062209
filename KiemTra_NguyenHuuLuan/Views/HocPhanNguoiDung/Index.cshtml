@@ -1,0 +1,66 @@
+﻿@model IEnumerable<KiemTra_NguyenHuuLuan.Models.HocPhan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hãy chọn học phần bạn muốn đăng ký</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã học phần
+        </th>
+        <th>
+            Tên học phần
+        </th>
+        <th>
+            Số tín chỉ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTinChi)
+            </td>
+            <td>
+                <button style="background-color: aquamarine; border: none" class="btnDatMua" data-id="@item.MaHP">Đăng ký</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(".btnDatMua").click(function () {
+        console.log("hihihi");
+        var id = $(this).attr("data-id")
+        $.ajax({
+
+            type: "GET",
+            data: { id: id },
+            url: "/HocPhanNguoiDung/ThemHocPhan",
+            success: function (status) {
+
+                alert("Đã thêm vào giỏ hàng")
+            },
+            error: function (err) {
+                alert('Error ', err.statusText);
+            }
+        })
+    })
+
+</script>

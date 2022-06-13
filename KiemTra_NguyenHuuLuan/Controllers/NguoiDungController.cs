@@ -24,7 +24,7 @@ namespace KiemTra_NguyenHuuLuan.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
-            var tendn = collection["USERNAME"];
+            var tendn = collection["MaSV"];
             
             if (String.IsNullOrEmpty(tendn))
             {
@@ -36,8 +36,8 @@ namespace KiemTra_NguyenHuuLuan.Controllers
                 SinhVien sv = data.SinhViens.SingleOrDefault(n => n.MaSV == tendn );
                 if (sv != null )
                 {
-                    Session["TaiKhoanKH"] = sv;
-                    return RedirectToAction("Index", "Home");
+                    Session["TaiKhoanSV"] = sv;
+                    return RedirectToAction("Index", "HocPhanNguoiDung");
                 }
                 else
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";

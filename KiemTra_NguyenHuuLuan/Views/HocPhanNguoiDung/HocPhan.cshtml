@@ -1,17 +1,17 @@
-﻿@model IEnumerable<KiemTra_NguyenHuuLuan.Models.HocPhan>
+﻿@model IEnumerable<KiemTra_NguyenHuuLuan.Models.hocphan>
 @{
     ViewBag.Title = "HocPhan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>HocPhan</h2>
+<h2>Học phần đã đăng ký</h2>
 <table class="table">
     <tr>
         <th>
-            Họ tên
+            Mã HP
         </th>
         <th>
-            Giới tính
+            Tên HP
         </th>
         <th>
             Số tín chỉ
@@ -32,32 +32,9 @@
                 @Html.DisplayFor(modelItem => item.SoTinChi)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaHP }) |
-                @Html.ActionLink("Details", "Detail", new { id = item.MaHP }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaHP })
             </td>
         </tr>
     }
 
 </table>
 
-<script>
-    $(".btnDatMua").click(function () {
-        console.log("hihihi");
-        var id = $(this).attr("data-id")
-        $.ajax({
-
-            type: "GET",
-            data: { id: id },
-            url: "/HocPhanNguoiDung/ThemGioHang",
-            success: function (status) {
-
-                alert("Đã thêm vào giỏ hàng")
-            },
-            error: function (err) {
-                alert('Error ', err.statusText);
-            }
-        })
-    })
-
-</script>

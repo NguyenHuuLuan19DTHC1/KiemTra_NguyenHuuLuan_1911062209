@@ -20,27 +20,47 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                   
+
                     <li>@Html.ActionLink("Sinh viên", "Index", "SinhVien")</li>
                     <li>@Html.ActionLink("Học phần", "Index", "HocPhan")</li>
                     <li>
-                                        @using KiemTra_NguyenHuuLuan.Models
-                                        @if (Session["TaiKhoanSV"] != null)
-                                        {
-                                            SinhVien tk = (SinhVien)Session["TaiKhoanSV"];
+                        @using KiemTra_NguyenHuuLuan.Models
+                        @if (Session["TaiKhoanSV"] != null)
+                        {
+                            SinhVien sv = (SinhVien)Session["TaiKhoanSV"];
+                            <a href="@Url.Action("Index","HocPhanNguoiDung")" class="user_link" style="color:orange">Xin Chào:<br /> @sv.MaSV</a>
 
-                                            <a href="@Url.Action("Info","NguoiDung")" class="user_link">
-                                                Đăng ký
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("DangNhap","NguoiDung")" class="user_link">
-                                                Đăng ký
-                                            </a>
-                                        }
-                                    </li>
-                    <li>@Html.ActionLink("Đăng nhập", "DangNhap", "NguoiDung")</li>
+                        }
+                        else if (Session["TaiKhoanSV"] == null)
+                        {
+                            <a href="@Url.Action("DangNhap","NguoiDung")" class="user_link">
+                                Đăng ký
+                            </a>
+                        }
+                    </li>
+                    <li>
+                        @using KiemTra_NguyenHuuLuan.Models
+                        @if (Session["TaiKhoanSV"] != null)
+                        {
+                            SinhVien sv = (SinhVien)Session["TaiKhoanSV"];
+                            <a href="@Url.Action("LogOut", "SinhVien")" class="order_online">
+                                Đăng Xuất
+                            </a>
+
+                        }
+                        else if (Session["TaiKhoanSV"] == null)
+                        {
+                            <a href="@Url.Action("DangNhap","NguoiDung")" class="user_link">
+                                Đăng nhập
+                            </a>
+                        }
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("HocPhan","HocPhanNguoiDung")" class="user_link">
+                            Học phần đã đăng ký
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
