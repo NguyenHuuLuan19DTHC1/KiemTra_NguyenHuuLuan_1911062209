@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            Mã học phần
+        </th>
+        <th>
             Tên học phần
         </th>
         <th>
@@ -24,15 +27,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.MaHP)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TenHP)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SoTinChi)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaHP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaHP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaHP })
+            <button style="background-color: aquamarine; border: none" class="btnDatMua" data-id="@item.MaHP">Đăng ký</button>
         </td>
     </tr>
 }

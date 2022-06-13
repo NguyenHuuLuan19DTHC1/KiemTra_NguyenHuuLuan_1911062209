@@ -32,5 +32,17 @@ namespace KiemTra_NguyenHuuLuan.Controllers
 
             return View(lstGioHang);
         }
+        public ActionResult ThemHocPhan(string id, string strURL)
+        {
+            List<HocPhan> lstHocPhan = LayHocPhan();
+            HocPhan hocphan = lstHocPhan.Find(n => n.MaHP == id);
+            if (hocphan == null)
+            {
+                hocphan = new HocPhan();
+                lstHocPhan.Add(hocphan);
+                //return Redirect(strURL);
+            }
+            return Content("");
+        }
     }
 }
